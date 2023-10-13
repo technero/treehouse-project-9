@@ -5,51 +5,75 @@ const container = document.getElementById('container');
 const cardDetails = [
     {
         imgSrc: 'Screenshot 2023-10-11 115846.png',
-        title: 'Photo Gallery 1',
+        title: 'Photo Gallery',
         description: 'This is a kind of natural photos that make you meditate for a while.',
         link: 'https://technero.github.io/treehouse-project5/',
+        linkText: 'Gallery'
     },
     {
-        imgSrc: 'another_image.png',
-        title: 'Photo Gallery 2',
-        description: 'Description for gallery 2.',
-        link: 'https://example.com/gallery2',
+        imgSrc: 'Screenshot 2023-10-12 231442.png',
+        title: 'Game Wheel Of Success',
+        description: 'This is a sixth project that I made and it was a nice game.You can try it now!',
+        link: 'https://technero.github.io/treehouse-project6/',
+        linkText: `Let's Play`
+    },
+    {
+        imgSrc: 'Screenshot 2023-10-12 231228.png',
+        title: 'Chart Web App',
+        description: 'This is a longer card with supporting text below as a natural lead-in to additional content',
+        link: 'https://technero.github.io/treehouse-project-7/',
+        linkText: 'Visit Project'
+    },
+    {
+        imgSrc: 'Screenshot 2023-10-12 133629.png',
+        title: 'Startup Employee Directory',
+        description: 'This is a longer card with supporting text below as a natural lead-in to additional content.This content is a little bit longer.',
+        link: 'https://technero.github.io/treehouse-project-8/',
+        linkText: 'Visit Project'
+    },
+    {
+        imgSrc: 'Screenshot 2023-10-11 224118.png',
+        title: 'Circles',
+        description: 'This is a forth project for me, i used SASS in it.',
+        link: 'https://technero.github.io/treehouse-project4/',
+        linkText: 'SASS Project'
     },
     // Add more card details as needed
 ];
 // Loop through cardDetails and create cards
 cardDetails.forEach(detail => {
+    const { imgSrc, title, description, link, linkText } = detail;
     const colDiv = document.createElement('div');
     colDiv.classList.add("col");
 
     const cardDiv = document.createElement('div');
-    cardDiv.classList.add('card');
+    cardDiv.classList.add('card', 'pt-3', 'card-size');
 
     const img = document.createElement('img');
-    img.src = detail.imgSrc;
+    img.src = imgSrc;
     img.classList.add('card-img-top');
 
     const cardBodyDiv = document.createElement('div');
-    cardBodyDiv.classList.add('card-body');
+    cardBodyDiv.classList.add('card-body', 'mt-3');
 
-    const title = document.createElement('h5');
-    title.classList.add('card-title');
-    title.textContent = detail.title;
+    const titleEl = document.createElement('h5');
+    titleEl.classList.add('card-title');
+    titleEl.textContent = title;
 
-    const text = document.createElement('p');
-    text.classList.add('card-text');
-    text.textContent = 'This is a kind of natural photos that make you meditate for a while.';
+    const textEl = document.createElement('p');
+    textEl.classList.add('card-text');
+    textEl.textContent = description;
 
-    const link = document.createElement('a');
-    link.classList.add('btn', 'btn-primary', 'btn-lg');
-    link.href = detail.link;
-    link.target = '_blank';
-    link.textContent = 'Gallery';
+    const linkEl = document.createElement('a');
+    linkEl.classList.add('btn', 'btn-secondary', 'btn-lg');
+    linkEl.href = link;
+    linkEl.target = '_blank';
+    linkEl.textContent = linkText;
 
     // Append elements
-    cardBodyDiv.appendChild(title);
-    cardBodyDiv.appendChild(text);
-    cardBodyDiv.appendChild(link);
+    cardBodyDiv.appendChild(titleEl);
+    cardBodyDiv.appendChild(textEl);
+    cardBodyDiv.appendChild(linkEl);
 
     cardDiv.appendChild(img);
     cardDiv.appendChild(cardBodyDiv);
