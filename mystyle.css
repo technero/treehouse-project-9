@@ -3,11 +3,89 @@ h1 {
 
 }
 
+iframe {
+    height: 900px;
+    width: 100%;
+}
+
 .banner {
-    max-width: 100%;
+    max-height: 240px;
+}
+
+#container {
+    max-width: 1024px;
+    margin: auto;
 }
 
 .card-size {
     width: 100%;
     max-width: 350px;
+    cursor: pointer;
+}
+
+.card-size:hover {
+    box-shadow: 7px 7px #EEEEEE;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.skills-section {
+    max-width: 300px;
+}
+
+.skills {
+    max-width: 300px;
+}
+
+.skills,
+.contact {
+    gap: 20px
+}
+
+li {
+    font-size: 15px !important;
+}
+
+.html-5 {
+    background-color: #f06529;
+    color: #ebebeb;
+}
+
+.css-3 {
+    background-color: #264de4;
+    color: #ebebeb;
+}
+
+.js {
+    background-color: #f0db4f;
+    color: #323330;
+}
+
+.bootstrap {
+    background-color: #563d7c;
+    color: #fff;
+}
+
+.sass {
+    background-color: #cc6699;
+    color: #fff;
+}
+
+.linkedin-icon {
+    color: #0a66c2;
+}
+
+@media (min-width: 768px) {
+    .banner {
+        max-height: 500px;
+    }
 }

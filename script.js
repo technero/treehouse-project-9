@@ -1,45 +1,52 @@
 // Assuming you have a container element with id 'container'
 const container = document.getElementById('container');
+const modal = document.getElementById('projectModal');
+const modalTitle = document.getElementById('projectModalTitle');
+const modalIframe = document.getElementById('projectSrc');
+const modalLink = document.getElementById('projectLink');
 
 // Sample data for cards
 const cardDetails = [
     {
-        imgSrc: 'Screenshot 2023-10-11 115846.png',
+        imgSrc: 'photo-gallery-project.png',
         title: 'Photo Gallery',
-        description: 'This is a kind of natural photos that make you meditate for a while.',
+        description: 'Searchable gallery of photos with a carousel image view. Implemented with HTML5 & CSS3',
         link: 'https://technero.github.io/treehouse-project5/',
-        linkText: 'Gallery'
     },
     {
-        imgSrc: 'Screenshot 2023-10-12 231442.png',
+        imgSrc: 'wheel-of-success.png',
         title: 'Game Wheel Of Success',
-        description: 'This is a sixth project that I made and it was a nice game.You can try it now!',
+        description: 'Fun game of word guessing. The game interface is built with HTML5 & CSS3. The game logic is built with Vanilla JavaScript. JavaScript is also used for DOM manipulation based on user interactions',
         link: 'https://technero.github.io/treehouse-project6/',
-        linkText: `Let's Play`
     },
     {
-        imgSrc: 'Screenshot 2023-10-12 231228.png',
+        imgSrc: 'chart-web-app.png',
         title: 'Chart Web App',
-        description: 'This is a longer card with supporting text below as a natural lead-in to additional content',
+        description: 'Dashboard static page built with HTML5, CSS3 and JavaScript. It highlights the use chart library & grid layout. Javascript is used to demonstrate notification popup & dismissal. The project replaced raster images with SVG images in a responsive layout',
         link: 'https://technero.github.io/treehouse-project-7/',
-        linkText: 'Visit Project'
     },
     {
-        imgSrc: 'Screenshot 2023-10-12 133629.png',
+        imgSrc: 'startup-employee-directory.png',
         title: 'Startup Employee Directory',
-        description: 'This is a longer card with supporting text below as a natural lead-in to additional content.This content is a little bit longer.',
+        description: 'Directory of employees (randomly generated using random user API). JavaScript is used to manage fetch requests, dynamically generate employees cards and handle showing and dismissing employee details on card click.',
         link: 'https://technero.github.io/treehouse-project-8/',
-        linkText: 'Visit Project'
     },
     {
-        imgSrc: 'Screenshot 2023-10-11 224118.png',
+        imgSrc: 'circles-project.png',
         title: 'Circles',
-        description: 'This is a forth project for me, i used SASS in it.',
+        description: 'Static web page styled with HTML5 & Sass. It highlights the use of grid, responsive & mobile first approach.',
         link: 'https://technero.github.io/treehouse-project4/',
-        linkText: 'SASS Project'
     },
     // Add more card details as needed
 ];
+
+function setModalDetails(details) {
+    modalTitle.textContent = details.title;
+    modalIframe.setAttribute('src', details.link);
+    modalLink.setAttribute('href', details.link);
+    modal.classList.add('show');
+}
+
 // Loop through cardDetails and create cards
 cardDetails.forEach(detail => {
     const { imgSrc, title, description, link, linkText } = detail;
@@ -47,7 +54,13 @@ cardDetails.forEach(detail => {
     colDiv.classList.add("col");
 
     const cardDiv = document.createElement('div');
-    cardDiv.classList.add('card', 'pt-3', 'card-size');
+    cardDiv.classList.add('card', 'pt-3', 'card-size', "h-100");
+    cardDiv.setAttribute('data-bs-toggle', 'modal');
+    cardDiv.setAttribute('data-bs-target', '#projectModal');
+
+    cardDiv.addEventListener('click', () => {
+        setModalDetails(detail);
+    })
 
     const img = document.createElement('img');
     img.src = imgSrc;
@@ -64,21 +77,15 @@ cardDetails.forEach(detail => {
     textEl.classList.add('card-text');
     textEl.textContent = description;
 
-    const linkEl = document.createElement('a');
-    linkEl.classList.add('btn', 'btn-secondary', 'btn-lg');
-    linkEl.href = link;
-    linkEl.target = '_blank';
-    linkEl.textContent = linkText;
-
     // Append elements
     cardBodyDiv.appendChild(titleEl);
     cardBodyDiv.appendChild(textEl);
-    cardBodyDiv.appendChild(linkEl);
 
     cardDiv.appendChild(img);
     cardDiv.appendChild(cardBodyDiv);
 
     colDiv.appendChild(cardDiv);
+
     container.appendChild(colDiv);
 });
 
